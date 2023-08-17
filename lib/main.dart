@@ -5,6 +5,8 @@ import './pages/video.dart';
 import './pages/home.dart';
 import './pages/search.dart';
 import 'widgets/bottom_nav.dart';
+import './models/popular_movies.dart';
+import './api/popular_movie_api.dart';
 
 final ThemeData myTheme = ThemeData(
   primaryColor: Colors.red, // Replace with your primary color
@@ -15,10 +17,23 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+
+  late Future<List<PopularMovie>> popularMovies;
+  @override
+  void initState() {
+    super.initState();
+    popularMovies = PopularMovieAPI().getPopularMovies();
+  }
+
   @override
   Widget build(BuildContext context) {
     Color myPrimaryColor = Colors.black;
