@@ -27,13 +27,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
 
-  late Future<List<PopularMovie>> popularMovies;
-  @override
-  void initState() {
-    super.initState();
-    popularMovies = PopularMovieAPI().getPopularMovies();
-  }
-
   @override
   Widget build(BuildContext context) {
     Color myPrimaryColor = Colors.black;

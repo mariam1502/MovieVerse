@@ -1,14 +1,20 @@
-import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import '../widgets/home_widgets/drawer.dart';
 import '../widgets/home_widgets/silder.dart';
-import '../widgets/home_widgets/movie_list.dart';
 import '../widgets/home_widgets/actor.dart';
+import '../futureBuilder.dart/popular.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  // late Future<List<PopularMovie>> popularMovies;
 
   @override
   Widget build(BuildContext context) {
@@ -35,24 +41,10 @@ class HomePage extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               margin: EdgeInsets.all(15),
               height: 30,
-              child: Text('Recommended For You',
+              child: Text('Popular Movies',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             ),
-            Container(
-              height: 250,
-              child: movieSlide(),
-            ),
-            Container(
-              alignment: Alignment.bottomLeft,
-              margin: EdgeInsets.all(15),
-              height: 30,
-              child: Text('Trending',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            ),
-            Container(
-              height: 250,
-              child: movieSlide(),
-            ),
+            Container(color: Colors.white, height: 250, child: PopularFuture()),
             Container(
               padding: EdgeInsets.all(10),
               child: Text(
