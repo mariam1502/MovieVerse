@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import '../widgets/home_widgets/drawer.dart';
 import '../widgets/home_widgets/silder.dart';
 import '../widgets/home_widgets/actor.dart';
-import '../futureBuilder.dart/popular.dart';
+import '../futureBuilder/popular.dart';
+import '../futureBuilder/upcoming.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,7 +45,15 @@ class _HomePageState extends State<HomePage> {
               child: Text('Popular Movies',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             ),
-            Container(color: Colors.white, height: 250, child: PopularFuture()),
+            Container(height: 250, child: PopularFuture()),
+            Container(
+              alignment: Alignment.bottomLeft,
+              margin: EdgeInsets.all(15),
+              height: 30,
+              child: Text('Up Coming Movies',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            ),
+            Container(height: 250, child: upComingFuture()),
             Container(
               padding: EdgeInsets.all(10),
               child: Text(

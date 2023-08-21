@@ -4,8 +4,24 @@ import 'package:flutter/material.dart';
 import '../widgets/icon.dart';
 import '../pages/video.dart';
 
-class MovieDetails extends StatelessWidget {
+class MovieDetails extends StatefulWidget {
+  // movieRating
+  // title
+  // overview
+
   MovieDetails({super.key});
+
+  @override
+  State<MovieDetails> createState() => _MovieDetailsState();
+}
+
+class _MovieDetailsState extends State<MovieDetails> {
+  @override
+  void initState() {
+    super.initState();
+    // itemDetails = TMDBService().fetchItemDetailsById(12345); // Replace with the actual ID
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-import './pages/details.dart';
-import './pages/discover.dart';
-import './pages/video.dart';
-import './pages/home.dart';
-import './pages/search.dart';
-import 'widgets/bottom_nav.dart';
-import './models/popular_movies.dart';
-import './api/popular_movie_api.dart';
+import './router/router.dart';
 
 final ThemeData myTheme = ThemeData(
   primaryColor: Colors.red, // Replace with your primary color
@@ -47,7 +40,7 @@ class _MyAppState extends State<MyApp> {
         900: myPrimaryColor,
       },
     );
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Netflix',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -70,8 +63,7 @@ class _MyAppState extends State<MyApp> {
                 Colors.white70, // Set the default color for icons in this theme
             size: 23, // Set the default size for icons in this theme
           )),
-      home: BottomNav(),
-      // Set your initial screen here
+      routerConfig: myrouter().my_router,
     );
   }
 }

@@ -33,9 +33,10 @@ class _PopularFutureState extends State<PopularFuture> {
           return Text(
               "Error fetching data: ${snapshot.error}"); // Handle error if fetching data fails
         } else if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator(
-            color: Colors.white,
-          );
+          return Center(
+              child: CircularProgressIndicator(
+            color: Colors.red,
+          ));
         } else if (!snapshot.hasData) {
           return Text('Data is empty !');
         }
@@ -57,29 +58,3 @@ class _PopularFutureState extends State<PopularFuture> {
     );
   }
 }
-
-
-
-
-   //   final overviewList = snapshot.data!
-        //       // .map((e) =>   Image.network(
-        //       //       Constants.imagePath + e.poster_path.toString(),
-        //       //       width: 100,
-        //       //     ))
-        //       // .toList();
-
-        //       .map(
-        //         (popular) => Container(
-        //           height: 250,
-        //           child: movieSlide(
-        //               movieRatting: popular.vote_average,
-        //               movieTite: popular.original_title.toString(),
-        //               moviePoster:
-        //                   Constants.imagePath + popular.poster_path.toString()),
-        //         ),
-        //       )
-        //       .toList();
-
-        //   return overviewList;
-        // }
-
