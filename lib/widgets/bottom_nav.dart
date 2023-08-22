@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import '../pages/home.dart';
-import '../pages/discover.dart';
-import '../pages/details.dart';
-import '../pages/search.dart';
-import '../pages/video.dart';
-import '../pages/intro.dart';
+import '../screens/home.dart';
+import '../screens/discover.dart';
+import '../screens/details.dart';
+import '../screens/search.dart';
+import '../screens/video.dart';
+import '../screens/intro.dart';
 
 final pages = [
   const IntroScreen(),
   const HomePage(),
-  MovieDetails(),
   const SearchScreen(),
   MovieDiscover(),
 ];

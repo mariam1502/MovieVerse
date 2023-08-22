@@ -11,7 +11,7 @@ class UpComing {
   String originalTitle;
   String overview;
   String posterPath;
-  DateTime releaseDate;
+  dynamic releaseDate;
   String original_title;
   dynamic vote_average;
 

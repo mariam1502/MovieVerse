@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import './router/router.dart';
 
 final ThemeData myTheme = ThemeData(
@@ -7,7 +8,9 @@ final ThemeData myTheme = ThemeData(
 );
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
+  //A widget that stores the state of providers. All Flutter applications using Riverpod
+  // must contain a ProviderScope at the root of their widget tree.
 }
 
 class MyApp extends StatefulWidget {

@@ -48,11 +48,18 @@ class _PopularFutureState extends State<PopularFuture> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return movieSlide(
-                      movieRatting: snapshot.data![index].vote_average,
-                      movieTite:
-                          snapshot.data![index].original_title.toString(),
-                      moviePoster: Constants.imagePath +
-                          snapshot.data![index].poster_path.toString());
+                    vote_average: snapshot.data![index].vote_average,
+                    original_title:
+                        snapshot.data![index].original_title.toString(),
+                    poster_path: Constants.imagePath +
+                        snapshot.data![index].poster_path.toString(),
+                    backdrop_path: snapshot.data![index].backdrop_path,
+                    id: snapshot.data![index].id,
+                    overview: snapshot.data![index].overview,
+                    release_date: snapshot.data![index].release_date,
+                    original_language:
+                        snapshot.data![index].original_language.toString(),
+                  );
                 }));
       },
     );

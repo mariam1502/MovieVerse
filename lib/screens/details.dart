@@ -2,25 +2,28 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import '../widgets/icon.dart';
-import '../pages/video.dart';
+import '../screens/video.dart';
+import '../widgets/costants.dart';
 
-class MovieDetails extends StatefulWidget {
-  // movieRating
-  // title
-  // overview
+class MovieDetails extends StatelessWidget {
+  dynamic? backdrop_path;
+  dynamic? original_language;
+  dynamic original_title;
+  dynamic overview;
+  dynamic poster_path;
+  dynamic release_date;
+  dynamic vote_average;
+  dynamic id;
 
-  MovieDetails({super.key});
-
-  @override
-  State<MovieDetails> createState() => _MovieDetailsState();
-}
-
-class _MovieDetailsState extends State<MovieDetails> {
-  @override
-  void initState() {
-    super.initState();
-    // itemDetails = TMDBService().fetchItemDetailsById(12345); // Replace with the actual ID
-  }
+  MovieDetails(
+      {required this.backdrop_path,
+      required this.original_title,
+      required this.original_language,
+      required this.overview,
+      required this.poster_path,
+      required this.release_date,
+      required this.vote_average,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +38,8 @@ class _MovieDetailsState extends State<MovieDetails> {
               height: 270,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(
-                      'https://statcdn.fandango.com/MPX/image/NBCU_Fandango/624/71/thumb_E04C94D9-CEB2-455F-8191-7C787943E0AC__330754.jpg'),
+                  image:
+                      NetworkImage(Constants.imagePath + '${this.poster_path}'),
                   fit: BoxFit
                       .cover, // Set the fit option to cover to fill the container while maintaining the image's aspect ratio
                 ),
@@ -53,7 +56,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                           image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                            'https://cdn.hmv.com/r/w-1280/hmv/files/99/99bb9b45-e577-4073-bb60-3b46341f6747.jpg'),
+                            Constants.imagePath + '${this.poster_path}'),
                       ))),
                   Padding(
                     padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
@@ -69,7 +72,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                           Row(
                             children: [
                               Text(
-                                '7.6',
+                                '${this.vote_average.toString()}',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 25,
@@ -84,7 +87,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                           Text('208.759',
                               style: TextStyle(color: Colors.white)),
                           Text(
-                            'Joker',
+                            '${this.original_title}',
                             style: TextStyle(
                                 fontSize: 40,
                                 fontWeight: FontWeight.bold,
@@ -155,11 +158,10 @@ class _MovieDetailsState extends State<MovieDetails> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Joker',
+                '${this.original_title}',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
-              Text(
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+              Text('${this.overview}'),
               SizedBox(
                 height: 30,
               ),

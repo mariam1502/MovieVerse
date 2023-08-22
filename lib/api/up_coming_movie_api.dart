@@ -15,7 +15,7 @@ class upComingAPI {
       print(decodedData);
       return decodedData.map((movie) => UpComing.fromJson(movie)).toList();
     } else {
-      throw Exception("Something Happened !");
+      throw Exception('Failed to load item details');
     }
   }
 }

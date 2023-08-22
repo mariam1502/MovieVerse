@@ -42,10 +42,17 @@ class _upComingFutureState extends State<upComingFuture> {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return movieSlide(
-                movieRatting: snapshot.data![index].vote_average,
-                movieTite: snapshot.data![index].original_title.toString(),
-                moviePoster: Constants.imagePath +
-                    snapshot.data![index].posterPath.toString());
+              vote_average: snapshot.data![index].vote_average,
+              original_title: snapshot.data![index].original_title.toString(),
+              poster_path: Constants.imagePath +
+                  snapshot.data![index].posterPath.toString(),
+              backdrop_path: snapshot.data![index].backdropPath,
+              id: snapshot.data![index].id,
+              overview: snapshot.data![index].overview,
+              release_date: snapshot.data![index].releaseDate.toString(),
+              original_language:
+                  snapshot.data![index].originalLanguage.toString(),
+            );
           },
         ));
       },
