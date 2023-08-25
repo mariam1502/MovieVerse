@@ -1,8 +1,10 @@
 import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter/material.dart';
+import 'package:netflix/providers/providers.dart';
 
-class movieSlide extends StatelessWidget {
+class movieSlide extends ConsumerWidget {
   String? backdrop_path;
   String? original_language;
   String original_title;
@@ -23,21 +25,24 @@ class movieSlide extends StatelessWidget {
       required this.id});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
         onTap: () {
-          final encodedBackdropPath = Uri.encodeComponent(backdrop_path!);
-          final encodedOriginalLanguage =
-              Uri.encodeComponent(original_language!);
-          final encodedOriginalTitle = Uri.encodeComponent(original_title);
-          final encodedOverview = Uri.encodeComponent(overview);
-          final encodedPosterPath = Uri.encodeComponent(poster_path);
-          final encodedReleaseDate = Uri.encodeComponent(release_date);
-          final encodedVoteAverage =
-              Uri.encodeComponent(vote_average.toString());
-          final path =
-              "/build/$encodedBackdropPath/$encodedOriginalLanguage/$encodedOriginalTitle/$encodedOverview/$encodedPosterPath/$encodedReleaseDate/$encodedVoteAverage/$id";
-          GoRouter.of(context).go(path); // Navigate to '/second' route
+          ref.read(SelectedMovieByIDProvider.notifier).state = this.id;
+          // final encodedBackdropPath = Uri.encodeComponent(backdrop_path!);
+          // final encodedOriginalLanguage =
+          //     Uri.encodeComponent(original_language!);
+          // final encodedOriginalTitle = Uri.encodeComponent(original_title);
+          // final encodedOverview = Uri.encodeComponent(overview);
+          // final encodedPosterPath = Uri.encodeComponent(poster_path);
+          // final encodedReleaseDate = Uri.encodeComponent(release_date);
+          // final encodedVoteAverage =
+          //     Uri.encodeComponent(vote_average.toString());
+          // final path =
+          //     "/build/$encodedBackdropPath/$encodedOriginalLanguage/$encodedOriginalTitle/$encodedOverview/$encodedPosterPath/$encodedReleaseDate/$encodedVoteAverage/$id";
+          // GoRouter.of(context).go(path); // Navigate to '/second' route
+
+          GoRouter.of(context).go('/details'); // Navigate to '/second' route
         },
         child: Stack(
           alignment: Alignment.bottomCenter,

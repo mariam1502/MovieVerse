@@ -10,9 +10,11 @@ class MovieCover extends StatelessWidget {
   dynamic original_title;
   dynamic original_language;
   dynamic release_date;
+  String backdropPath;
 
   MovieCover(
       {super.key,
+      required this.backdropPath,
       required this.original_language,
       required this.original_title,
       required this.poster_path,
@@ -28,7 +30,7 @@ class MovieCover extends StatelessWidget {
           height: 270,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(Constants.imagePath + '${this.poster_path}'),
+              image: NetworkImage(Constants.imagePath + '${this.backdropPath}'),
               fit: BoxFit.cover,
             ),
           ),

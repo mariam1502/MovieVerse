@@ -7,24 +7,37 @@ import '../widgets/play-button-widget.dart';
 import '../widgets/movie-actors-widget.dart';
 
 class MovieDetails extends StatefulWidget {
-  dynamic? backdrop_path;
-  dynamic? original_language;
-  dynamic original_title;
-  dynamic overview;
-  dynamic poster_path;
-  dynamic release_date;
-  dynamic vote_average;
-  dynamic id;
+  String backdropPath;
+  List<dynamic> genres;
+  int id;
+  String imdbId;
+  String originalLanguage;
+  String originalTitle;
+  String overview;
+  String posterPath;
+  DateTime releaseDate;
+  int runtime;
+  String status;
+  String title;
+  double voteAverage;
+  int voteCount;
 
-  MovieDetails(
-      {required this.backdrop_path,
-      required this.original_title,
-      required this.original_language,
-      required this.overview,
-      required this.poster_path,
-      required this.release_date,
-      required this.vote_average,
-      required this.id});
+  MovieDetails({
+    required this.backdropPath,
+    required this.genres,
+    required this.id,
+    required this.imdbId,
+    required this.originalLanguage,
+    required this.originalTitle,
+    required this.overview,
+    required this.posterPath,
+    required this.releaseDate,
+    required this.runtime,
+    required this.status,
+    required this.title,
+    required this.voteAverage,
+    required this.voteCount,
+  });
 
   @override
   State<MovieDetails> createState() => _MovieDetailsState();
@@ -37,11 +50,12 @@ class _MovieDetailsState extends State<MovieDetails> {
         body: Container(
       child: ListView(children: [
         MovieCover(
-            original_language: widget.original_language,
-            original_title: widget.original_title,
-            poster_path: widget.poster_path,
-            release_date: widget.release_date,
-            vote_average: widget.vote_average),
+            backdropPath: widget.backdropPath,
+            original_language: widget.originalLanguage,
+            original_title: widget.originalTitle,
+            poster_path: widget.posterPath,
+            release_date: widget.releaseDate,
+            vote_average: widget.voteAverage),
         SizedBox(height: 30),
         PlayButton(),
         SizedBox(height: 40),
@@ -52,7 +66,7 @@ class _MovieDetailsState extends State<MovieDetails> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '${this.widget.original_title}',
+                '${this.widget.originalTitle}',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               Text('${this.widget.overview}'),
