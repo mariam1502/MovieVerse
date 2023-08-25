@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:netflix/screens/discover.dart';
+import 'package:netflix/screens/home.dart';
 import '../widgets/bottom_nav.dart';
 import '../screens/details.dart';
 import '../futureBuilder/movie-id-future.dart';
+import '../screens/intro.dart';
 
 class myrouter {
   final GoRouter my_router = GoRouter(
@@ -11,7 +13,7 @@ class myrouter {
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
-          return BottomNav();
+          return IntroScreen();
         },
       ),
 
@@ -53,6 +55,12 @@ class myrouter {
         path: '/details',
         builder: (BuildContext context, GoRouterState state) {
           return MovieDetailesFutureID();
+        },
+      ),
+      GoRoute(
+        path: '/home',
+        builder: (BuildContext context, GoRouterState state) {
+          return BottomNav();
         },
       ),
     ],

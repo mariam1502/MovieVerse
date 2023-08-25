@@ -7,7 +7,6 @@ import '../screens/video.dart';
 import '../screens/intro.dart';
 
 final pages = [
-  const IntroScreen(),
   const HomePage(),
   const SearchScreen(),
   MovieDiscover(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({Key? key}) : super(key: key);
@@ -18,11 +19,8 @@ class IntroScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'images/logo.png',
-                      width: 200,
-                    ),
-                    SizedBox(
-                      height: 25,
+                      'images/new_logo.png',
+                      width: 160,
                     ),
                     SizedBox(
                         child: Column(
@@ -44,9 +42,12 @@ class IntroScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(0),
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    GoRouter.of(context)
+                        .go('/home'); // Navigate to '/second' route
+                  },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.red, // Red background color
                     onPrimary: Colors.white, // White text color
