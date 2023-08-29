@@ -19,18 +19,18 @@ class MovieDetailesFutureID extends ConsumerStatefulWidget {
 }
 
 class _MovieDetailesFutureIDState extends ConsumerState<MovieDetailesFutureID> {
-  late Future<MovieId> popularData;
+  late Future<MovieId> movieData;
   @override
   void initState() {
     super.initState();
-    popularData = MovieDetailsId_API(
+    movieData = MovieDetailsId_API(
             id: ref.read(SelectedMovieByIDProvider.notifier).state)
         .getMoviesDetailsData();
   }
 
   FutureBuilder MovieDetailsDataById() {
     return FutureBuilder(
-        future: popularData,
+        future: movieData,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Text(

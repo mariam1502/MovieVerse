@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../widgets/home_widgets/drawer.dart';
 import '../widgets/home_widgets/silder.dart';
 import '../widgets/home_widgets/actor.dart';
@@ -27,7 +28,10 @@ class _HomePageState extends State<HomePage> {
           children: [
             Text('Home Page'),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  GoRouter.of(context)
+                      .go('/search'); // Navigate to '/second' route
+                },
                 icon: Icon(
                   Icons.search,
                   color: Colors.white,

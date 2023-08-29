@@ -5,7 +5,6 @@ import '../screens/search.dart';
 
 final pages = [
   const HomePage(),
-  const SearchScreen(),
   MovieDiscover(),
 ];
 Color bottom_icon_color = Colors.white70;
