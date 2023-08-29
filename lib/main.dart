@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import './router/router.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import './widgets/youtube-video-preview-widget.dart';
 
 final ThemeData myTheme = ThemeData(
   primaryColor: Colors.red, // Replace with your primary color
@@ -8,6 +11,12 @@ final ThemeData myTheme = ThemeData(
 );
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.black,
+    ),
+  );
   runApp(const ProviderScope(child: MyApp()));
   //A widget that stores the state of providers. All Flutter applications using Riverpod
   // must contain a ProviderScope at the root of their widget tree.

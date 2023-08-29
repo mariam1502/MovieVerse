@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/home.dart';
 import '../screens/discover.dart';
-import '../screens/details.dart';
 import '../screens/search.dart';
-import '../screens/video.dart';
-import '../screens/intro.dart';
 
 final pages = [
   const HomePage(),

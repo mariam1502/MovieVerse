@@ -6,6 +6,8 @@ import '../screens/video.dart';
 import '../widgets/play-button-widget.dart';
 import '../widgets/movie-actors-widget.dart';
 import 'package:go_router/go_router.dart';
+import '../widgets/youtube-video-preview-widget.dart';
+import '../futureBuilder/movie-video-id-future.dart';
 
 class MovieDetails extends StatefulWidget {
   String backdropPath;
@@ -105,10 +107,10 @@ class _MovieDetailsState extends State<MovieDetails> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    VideoPlayerView(
-                        url:
-                            'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
-                        dataSourceType: DataSourceType.network)
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20, 20, 20, 35),
+                      child: MovieVideoFutureID(),
+                    )
                   ]),
             )
           ]),
