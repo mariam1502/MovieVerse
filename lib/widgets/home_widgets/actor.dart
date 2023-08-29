@@ -1,54 +1,45 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
-class actorList extends StatelessWidget {
-  const actorList({super.key});
+import '../costants.dart';
+
+class ActorList extends StatelessWidget {
+  final String name;
+  final String profilePath;
+
+  ActorList({
+    required this.name,
+    required this.profilePath,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      // provide a fixed height
-      child: ListView(scrollDirection: Axis.horizontal, children: [
-        Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-              height: 300,
-              width: 130,
-              // color: Colors.pink,
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.only(bottom: 5),
+          width: 60,
+          height: 60,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              image: NetworkImage(Constants.imagePath + '$profilePath'),
+              fit: BoxFit.cover,
             ),
-            Positioned(
-              top: 10,
-              child: Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                width: 120,
-                height: 120,
-                child: ClipOval(
-                  child: Image.network(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HPKGcp3NyYgYypfFfjJKVcPRuxC2KfWEQXMxEGtCllgxk2XIvcM9TWUZeihBV2wiWjM&usqp=CAU',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-              width: 130,
-              height: 40,
-              // color: Colors.blue,
-              child: Text(
-                "Rayan Renolds",
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            )
-          ],
+          ),
         ),
-      ]),
+        Container(
+          width: 60,
+          child: Text(
+            name,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+            ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      ],
     );
   }
 }

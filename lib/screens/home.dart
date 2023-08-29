@@ -6,6 +6,7 @@ import '../widgets/home_widgets/silder.dart';
 import '../widgets/home_widgets/actor.dart';
 import '../futureBuilder/popular.dart';
 import '../futureBuilder/upcoming.dart';
+import '../futureBuilder/trending-actors-future.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -65,8 +66,8 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               width: 130,
-              height: 190,
-              child: actorList(),
+              height: 130,
+              child: TrendingActorsFuture(),
             ),
           ],
         ));

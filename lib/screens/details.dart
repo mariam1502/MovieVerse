@@ -111,9 +111,7 @@ class _MovieDetailsState extends State<MovieDetails> {
         SizedBox(
           height: 10,
         ),
-        Container(
-            height: 70, // Set the desired height for the horizontal list
-            child: MovieActorsIdFuture()),
+        Container(width: 130, height: 130, child: MovieActorsIdFuture()),
         SizedBox(
           height: 10,
         ),

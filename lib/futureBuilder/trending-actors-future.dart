@@ -1,33 +1,27 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:netflix/providers/providers.dart';
-
-import '../models/movie-actors-id.dart';
-import '../api/movie-actors-id-api.dart';
+import '../api/trending-actors-api.dart';
+import '../models/trending-actors.dart';
 import 'package:flutter/material.dart';
-import '../widgets/movie-actors-widget.dart';
 import '../widgets/home_widgets/actor.dart';
 
-class MovieActorsIdFuture extends ConsumerStatefulWidget {
-  const MovieActorsIdFuture({super.key});
+class TrendingActorsFuture extends StatefulWidget {
+  const TrendingActorsFuture({super.key});
 
   @override
-  ConsumerState<MovieActorsIdFuture> createState() =>
-      _MovieActorsIdFutureState();
+  State<TrendingActorsFuture> createState() => _TrendingActorsFutureState();
 }
 
-class _MovieActorsIdFutureState extends ConsumerState<MovieActorsIdFuture> {
-  late Future<List<MovieActorsById>> actorsData;
+class _TrendingActorsFutureState extends State<TrendingActorsFuture> {
+  late Future<List<TrendingActors>> trendingactorsData;
+
   @override
   void initState() {
     super.initState();
-    actorsData =
-        MovieActorsApi(id: ref.read(SelectedMovieByIDProvider.notifier).state)
-            .getMovieActors();
+    trendingactorsData = TrendingActorsAPI().getTrendingActors();
   }
 
-  FutureBuilder ActorsListData() {
+  FutureBuilder TrendingActorsData() {
     return FutureBuilder(
-      future: actorsData,
+      future: trendingactorsData,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Text(
@@ -65,6 +59,6 @@ class _MovieActorsIdFutureState extends ConsumerState<MovieActorsIdFuture> {
 
   @override
   Widget build(BuildContext context) {
-    return ActorsListData();
+    return TrendingActorsData();
   }
 }
