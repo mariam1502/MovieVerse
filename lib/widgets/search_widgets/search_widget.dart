@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:netflix/providers/providers.dart';
 
 class SearchWidget extends ConsumerStatefulWidget {
@@ -11,6 +12,7 @@ class SearchWidget extends ConsumerStatefulWidget {
 
 class _SearchWidgetState extends ConsumerState<SearchWidget> {
   final searchController = TextEditingController();
+  String changetext = ' ';
 
   @override
   Widget build(BuildContext context) {
@@ -21,37 +23,44 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
     }
 
     void _onSearchTextChanged(String newText) {
-      ref.read(SearchInputProvider.notifier).state = searchController.text;
+      setState(() {
+        changetext = newText;
+        ref.read(SearchInputProvider.notifier).state = changetext;
+      });
     }
 
-    return Container(
-      margin: EdgeInsets.all(10),
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.all(10),
 
-      height: 40, // Set the desired height here
-      child: TextField(
-        onChanged: _onSearchTextChanged,
-        controller: searchController,
-        style: TextStyle(color: Colors.white70),
-        decoration: InputDecoration(
-          prefixIcon: Icon(
-            Icons.search_outlined,
-            color: Colors.white70,
+          height: 40, // Set the desired height here
+          child: TextField(
+            onChanged: _onSearchTextChanged,
+            controller: searchController,
+            style: TextStyle(color: Colors.white70),
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.search_outlined,
+                color: Colors.white70,
+              ),
+              suffixIcon: Icon(
+                Icons.close,
+                color: Colors.white70,
+              ),
+              filled: true,
+              fillColor: Colors.red,
+              hintText: 'Search',
+              hintStyle: TextStyle(color: Colors.white70),
+              contentPadding: EdgeInsets.only(left: 8, right: 8),
+              border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
           ),
-          suffixIcon: Icon(
-            Icons.close,
-            color: Colors.white70,
-          ),
-          filled: true,
-          fillColor: Colors.red,
-          hintText: 'Search',
-          hintStyle: TextStyle(color: Colors.white70),
-          contentPadding: EdgeInsets.only(left: 8, right: 8),
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-      ),
+        )
+      ],
     );
   }
 }

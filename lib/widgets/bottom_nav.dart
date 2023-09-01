@@ -3,10 +3,7 @@ import '../screens/home.dart';
 import '../screens/discover.dart';
 import '../screens/search.dart';
 
-final pages = [
-  const HomePage(),
-  MovieDiscover(),
-];
+final pages = [const HomePage(), MovieDiscover(), Text('2'), Text('3')];
 Color bottom_icon_color = Colors.white70;
 
 class BottomNav extends StatefulWidget {

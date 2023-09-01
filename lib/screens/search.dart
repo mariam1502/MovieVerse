@@ -44,20 +44,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           SizedBox(
             height: 25,
           ),
-          SearchResultsuture(),
+          SearchResultsuture()
         ],
       ),
     );
   }
 }
-
-
-//  Consumer(
-//                     builder: (context, ref, child) {
-//                       String data = ref
-//                           .watch(SearchInputProvider.notifier)
-//                           .state
-//                           .toString();
-//                       return Text(data);
-//                     },
-//                   ),

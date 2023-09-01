@@ -18,9 +18,9 @@ class _SearchResultsutureState extends ConsumerState<SearchResultsuture> {
   @override
   void initState() {
     super.initState();
-    searcgResultsData = SearchResultsAPI(
-            string_query: ref.read(SearchInputProvider.notifier).state)
-        .getSearchResults();
+    searcgResultsData =
+        SearchResultsAPI(string_query: ref.read(SearchInputProvider).toString())
+            .getSearchResults();
   }
 
   FutureBuilder SearchResultaData() {
@@ -55,6 +55,13 @@ class _SearchResultsutureState extends ConsumerState<SearchResultsuture> {
 
   @override
   Widget build(BuildContext context) {
-    return SearchResultaData();
+    return Consumer(
+      builder: (context, ref, child) {
+        final newText = ref.watch(SearchInputProvider).toString();
+        searcgResultsData = SearchResultsAPI(string_query: newText.toString())
+            .getSearchResults();
+        return SearchResultaData();
+      },
+    );
   }
 }
